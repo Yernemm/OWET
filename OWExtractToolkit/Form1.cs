@@ -298,6 +298,24 @@ namespace OWExtractToolkit
             System.Diagnostics.Process.Start("https://yernemm.xyz/projects/owet");
         }
 
+        public static OtherTools OTForm = new OtherTools();
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OTForm.Show();
+            }
 
+            catch (ObjectDisposedException)
+            {
+                OTForm = new OtherTools();
+                OTForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex) + "            2");
+
+            }
+        }
     }
 }
