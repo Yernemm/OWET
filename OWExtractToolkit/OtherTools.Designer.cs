@@ -32,15 +32,13 @@
             this.topBar1 = new OWExtractToolkit.TopBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.mdPath = new System.Windows.Forms.TextBox();
+            this.mdMerge = new System.Windows.Forms.Button();
             this.mdName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.mdMerge = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.mdLevel = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.mdPath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.mdBrowse = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -64,9 +62,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.mdLevel);
-            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.mdBrowse);
             this.tabPage1.Controls.Add(this.mdMerge);
             this.tabPage1.Controls.Add(this.mdName);
             this.tabPage1.Controls.Add(this.label3);
@@ -81,6 +77,51 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "MergeDir";
             // 
+            // mdMerge
+            // 
+            this.mdMerge.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.mdMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mdMerge.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.mdMerge.Location = new System.Drawing.Point(9, 205);
+            this.mdMerge.Name = "mdMerge";
+            this.mdMerge.Size = new System.Drawing.Size(594, 82);
+            this.mdMerge.TabIndex = 5;
+            this.mdMerge.Text = "Merge";
+            this.mdMerge.UseVisualStyleBackColor = false;
+            this.mdMerge.Click += new System.EventHandler(this.mdMerge_Click);
+            // 
+            // mdName
+            // 
+            this.mdName.Location = new System.Drawing.Point(9, 154);
+            this.mdName.Name = "mdName";
+            this.mdName.Size = new System.Drawing.Size(594, 20);
+            this.mdName.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Directory name:";
+            // 
+            // mdPath
+            // 
+            this.mdPath.Location = new System.Drawing.Point(9, 100);
+            this.mdPath.Name = "mdPath";
+            this.mdPath.Size = new System.Drawing.Size(594, 20);
+            this.mdPath.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Parent directory path:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -91,75 +132,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Merge Directories";
             // 
-            // label2
+            // mdBrowse
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Parent directory path:";
-            // 
-            // mdPath
-            // 
-            this.mdPath.Location = new System.Drawing.Point(9, 72);
-            this.mdPath.Name = "mdPath";
-            this.mdPath.Size = new System.Drawing.Size(594, 20);
-            this.mdPath.TabIndex = 2;
-            // 
-            // mdName
-            // 
-            this.mdName.Location = new System.Drawing.Point(9, 126);
-            this.mdName.Name = "mdName";
-            this.mdName.Size = new System.Drawing.Size(594, 20);
-            this.mdName.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 109);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Directory name:";
-            // 
-            // mdMerge
-            // 
-            this.mdMerge.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.mdMerge.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.mdMerge.Location = new System.Drawing.Point(9, 215);
-            this.mdMerge.Name = "mdMerge";
-            this.mdMerge.Size = new System.Drawing.Size(591, 37);
-            this.mdMerge.TabIndex = 5;
-            this.mdMerge.Text = "Merge";
-            this.mdMerge.UseVisualStyleBackColor = false;
-            this.mdMerge.Click += new System.EventHandler(this.mdMerge_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 159);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Level of subdirectories:";
-            // 
-            // mdLevel
-            // 
-            this.mdLevel.Location = new System.Drawing.Point(9, 175);
-            this.mdLevel.Name = "mdLevel";
-            this.mdLevel.Size = new System.Drawing.Size(594, 20);
-            this.mdLevel.TabIndex = 8;
-            this.mdLevel.Text = "1";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 271);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(346, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Note: \"Level of subdirectories\" does nothing right now. Just keep it at 1.";
+            this.mdBrowse.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.mdBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mdBrowse.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.mdBrowse.Location = new System.Drawing.Point(9, 53);
+            this.mdBrowse.Name = "mdBrowse";
+            this.mdBrowse.Size = new System.Drawing.Size(594, 27);
+            this.mdBrowse.TabIndex = 6;
+            this.mdBrowse.Text = "Browse Directory...";
+            this.mdBrowse.UseVisualStyleBackColor = false;
+            this.mdBrowse.Click += new System.EventHandler(this.mdBrowse_Click);
             // 
             // OtherTools
             // 
@@ -193,8 +177,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button mdMerge;
-        private System.Windows.Forms.TextBox mdLevel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button mdBrowse;
     }
 }

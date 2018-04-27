@@ -13,6 +13,7 @@ namespace OWExtractToolkit
 {
     public partial class OtherTools : Form
     {
+        public SharedCode sc = new SharedCode();
         public OtherTools()
         {
             InitializeComponent();
@@ -22,11 +23,7 @@ namespace OWExtractToolkit
         {
             string path = mdPath.Text;
             string dir = mdName.Text;
-            int levels;
-            if(int.TryParse(mdLevel.Text, out levels))
-            {
-                if(levels > 0)
-                {
+
                     MessageBox.Show(path + "\\" + dir + "\\");
                     Directory.CreateDirectory(path + "\\" + dir);
                     
@@ -48,15 +45,26 @@ namespace OWExtractToolkit
                             }
                         }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Enter a valid integer level of 1 or above.");
-                }              
-            }
-            else
+             
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mdBrowse_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
             {
-                MessageBox.Show("Enter a valid integer level of 1 or above.");
+                fbd.SelectedPath = sc.dir + @"\output";
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    mdPath.Text = fbd.SelectedPath;
+                }
             }
         }
     }
