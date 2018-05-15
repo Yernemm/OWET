@@ -317,5 +317,28 @@ namespace OWExtractToolkit
 
             }
         }
+
+        public static ExtractWizard exWizard = new ExtractWizard();
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+
+
+            try
+            {
+                exWizard.Show();
+            }
+
+            catch (ObjectDisposedException)
+            {
+                exWizard = new ExtractWizard();
+                exWizard.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex) + "            2");
+
+            }
+        }
     }
 }
