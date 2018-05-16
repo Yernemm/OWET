@@ -82,7 +82,7 @@ namespace OWExtractToolkit
         void mainBtnClick(Object sender, EventArgs e)
         {
             var btn = (Button)sender;
-            var id = btn.Tag;
+            int id = int.Parse((string)btn.Tag);
             addToHistory(btn.Text);
             switch (depth)
             {
@@ -90,15 +90,27 @@ namespace OWExtractToolkit
                     //First stage
                     switch (id)
                     {
-                        case "0":
+                        case 0:
                             //Extract btn                          
                             setPage("What do you want to extract?", new string[] { "General Unlocks", "Hero Items and Unlocks", "Lootboxes", "Hero Sounds and Voice", "Map", "All Ability Icons", "NPC"}, 1);
                             break;
-                        case "1":
+                        case 1:
                             //List
                             setPage("What do you want to list?", new string[] { "General Unlocks", "Hero Unlocks", "Lootboxes", "Heroes", "Maps", "Highlights", "First set of Subtitles", "Second set of Subtitles", "Chat Replacements", "Encryption Keys", "Strings", "Achievements" }, 2);
                             break;
                     }
+
+                    break;
+                case 1:
+                    //EXTRACTION
+                    switch(id)
+                    {
+                        case 0:
+                            break;
+                    }
+                    break;
+                case 2:
+                    //LISTING
 
                     break;
 
