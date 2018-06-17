@@ -51,7 +51,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(16, 310);
+            this.button1.Location = new System.Drawing.Point(16, 220);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(478, 73);
             this.button1.TabIndex = 0;
@@ -74,7 +74,7 @@
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(16, 389);
+            this.button2.Location = new System.Drawing.Point(16, 299);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(478, 73);
             this.button2.TabIndex = 2;
@@ -86,7 +86,7 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(16, 547);
+            this.button3.Location = new System.Drawing.Point(16, 457);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(245, 55);
             this.button3.TabIndex = 3;
@@ -98,7 +98,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(16, 664);
+            this.label2.Location = new System.Drawing.Point(16, 574);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(414, 26);
             this.label2.TabIndex = 4;
@@ -133,7 +133,7 @@
             // 
             this.pictureBox2.Image = global::OWExtractToolkit.Properties.Resources.yernemmGif;
             this.pictureBox2.InitialImage = global::OWExtractToolkit.Properties.Resources.mainLogo;
-            this.pictureBox2.Location = new System.Drawing.Point(436, 664);
+            this.pictureBox2.Location = new System.Drawing.Point(436, 574);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(61, 45);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -145,7 +145,7 @@
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Location = new System.Drawing.Point(267, 547);
+            this.button4.Location = new System.Drawing.Point(267, 457);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(227, 55);
             this.button4.TabIndex = 9;
@@ -159,7 +159,7 @@
             this.logTxt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logTxt.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logTxt.ForeColor = System.Drawing.Color.Aquamarine;
-            this.logTxt.Location = new System.Drawing.Point(16, 608);
+            this.logTxt.Location = new System.Drawing.Point(16, 518);
             this.logTxt.Multiline = true;
             this.logTxt.Name = "logTxt";
             this.logTxt.ReadOnly = true;
@@ -186,7 +186,7 @@
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(16, 468);
+            this.button5.Location = new System.Drawing.Point(16, 378);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(478, 73);
             this.button5.TabIndex = 13;
@@ -198,12 +198,13 @@
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button6.Location = new System.Drawing.Point(16, 231);
+            this.button6.Location = new System.Drawing.Point(134, 28);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(478, 73);
+            this.button6.Size = new System.Drawing.Size(90, 51);
             this.button6.TabIndex = 14;
             this.button6.Text = "Overwatch Extraction Wizard";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
@@ -211,7 +212,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(506, 721);
+            this.ClientSize = new System.Drawing.Size(506, 635);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.topBar1);

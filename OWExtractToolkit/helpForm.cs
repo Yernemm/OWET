@@ -121,7 +121,7 @@ namespace OWExtractToolkit
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://yernemm.xyz");
+            System.Diagnostics.Process.Start("https://yernemm.xyz/blog/owet-guide/");
         }
 
         private void button2_Click(object sender, EventArgs e)

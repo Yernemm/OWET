@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace OWExtractToolkit
 {
@@ -51,7 +52,7 @@ namespace OWExtractToolkit
 
 
 
-        public bool dlToolchain()
+        public bool dlToolchainOLD()
         {
             try
             {
@@ -71,6 +72,44 @@ namespace OWExtractToolkit
             catch
             {
                 return false;
+            }
+        }
+
+        public bool dlToolchain()
+         
+        {
+            try
+            {
+                var webRequest = WebRequest.Create(@"https://ci.appveyor.com/api/projects/yukimono/owlib/branch/overwatch/1.14");
+                string strContent = "";
+                using (var response = webRequest.GetResponse())
+                using (var content = response.GetResponseStream())
+                using (var reader = new StreamReader(content))
+                {
+                    strContent = reader.ReadToEnd();
+                }
+            string[] pcont = strContent.Split('"');
+            int counter = 0;
+            int valNeed = -1;
+            foreach(string a in pcont)
+            {
+                counter++;
+                if (a == "jobId")
+                    valNeed = counter + 1;
+            }
+               
+                string actualURL = @"https://ci.appveyor.com/api/buildjobs/" + pcont[valNeed] + @"/artifacts/dist%2Ftoolchain-release.zip";
+           // MessageBox.Show(actualURL);
+                dlFile(actualURL, "toolchain.zip");
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+                
             }
         }
 
