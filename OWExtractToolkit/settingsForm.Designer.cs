@@ -50,6 +50,11 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button9 = new System.Windows.Forms.Button();
             this.topBar1 = new OWExtractToolkit.TopBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listThemes = new System.Windows.Forms.ListBox();
+            this.btThemesApply = new System.Windows.Forms.Button();
+            this.btThemesOpen = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -273,15 +278,69 @@
             // 
             this.topBar1.Location = new System.Drawing.Point(-2, -2);
             this.topBar1.Name = "topBar1";
-            this.topBar1.Size = new System.Drawing.Size(496, 34);
+            this.topBar1.Size = new System.Drawing.Size(843, 34);
             this.topBar1.TabIndex = 99;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(508, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(311, 23);
+            this.label5.TabIndex = 100;
+            this.label5.Text = "Themes:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // listThemes
+            // 
+            this.listThemes.FormattingEnabled = true;
+            this.listThemes.Location = new System.Drawing.Point(511, 88);
+            this.listThemes.Name = "listThemes";
+            this.listThemes.Size = new System.Drawing.Size(308, 238);
+            this.listThemes.TabIndex = 101;
+            // 
+            // btThemesApply
+            // 
+            this.btThemesApply.Location = new System.Drawing.Point(511, 332);
+            this.btThemesApply.Name = "btThemesApply";
+            this.btThemesApply.Size = new System.Drawing.Size(148, 25);
+            this.btThemesApply.TabIndex = 103;
+            this.btThemesApply.Text = "Apply Theme";
+            this.btThemesApply.UseVisualStyleBackColor = true;
+            this.btThemesApply.Click += new System.EventHandler(this.btThemesApply_Click);
+            // 
+            // btThemesOpen
+            // 
+            this.btThemesOpen.Location = new System.Drawing.Point(511, 361);
+            this.btThemesOpen.Name = "btThemesOpen";
+            this.btThemesOpen.Size = new System.Drawing.Size(308, 25);
+            this.btThemesOpen.TabIndex = 104;
+            this.btThemesOpen.Text = "Open Themes Folder";
+            this.btThemesOpen.UseVisualStyleBackColor = true;
+            this.btThemesOpen.Click += new System.EventHandler(this.btThemesOpen_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(671, 332);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(148, 25);
+            this.button10.TabIndex = 105;
+            this.button10.Text = "Preview Theme";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(25)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(489, 398);
+            this.ClientSize = new System.Drawing.Size(836, 399);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btThemesOpen);
+            this.Controls.Add(this.btThemesApply);
+            this.Controls.Add(this.listThemes);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.topBar1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.radioButton2);
@@ -337,5 +396,10 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button button9;
         private TopBar topBar1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listThemes;
+        private System.Windows.Forms.Button btThemesApply;
+        private System.Windows.Forms.Button btThemesOpen;
+        private System.Windows.Forms.Button button10;
     }
 }

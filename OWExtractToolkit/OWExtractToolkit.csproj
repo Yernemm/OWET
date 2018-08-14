@@ -115,6 +115,7 @@
       <DependentUpon>settingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SharedCode.cs" />
+    <Compile Include="Theme.cs" />
     <Compile Include="themeSample.cs">
       <SubType>Form</SubType>
     </Compile>

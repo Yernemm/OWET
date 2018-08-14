@@ -32,13 +32,13 @@
             this.topBar1 = new OWExtractToolkit.TopBar();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mdBrowse = new System.Windows.Forms.Button();
             this.mdMerge = new System.Windows.Forms.Button();
             this.mdName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.mdPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.mdBrowse = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +76,19 @@
             this.tabPage1.Size = new System.Drawing.Size(609, 398);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "MergeDir";
+            // 
+            // mdBrowse
+            // 
+            this.mdBrowse.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.mdBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mdBrowse.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.mdBrowse.Location = new System.Drawing.Point(9, 53);
+            this.mdBrowse.Name = "mdBrowse";
+            this.mdBrowse.Size = new System.Drawing.Size(594, 27);
+            this.mdBrowse.TabIndex = 6;
+            this.mdBrowse.Text = "Browse Directory...";
+            this.mdBrowse.UseVisualStyleBackColor = false;
+            this.mdBrowse.Click += new System.EventHandler(this.mdBrowse_Click);
             // 
             // mdMerge
             // 
@@ -132,19 +145,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Merge Directories";
             // 
-            // mdBrowse
-            // 
-            this.mdBrowse.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.mdBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mdBrowse.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.mdBrowse.Location = new System.Drawing.Point(9, 53);
-            this.mdBrowse.Name = "mdBrowse";
-            this.mdBrowse.Size = new System.Drawing.Size(594, 27);
-            this.mdBrowse.TabIndex = 6;
-            this.mdBrowse.Text = "Browse Directory...";
-            this.mdBrowse.UseVisualStyleBackColor = false;
-            this.mdBrowse.Click += new System.EventHandler(this.mdBrowse_Click);
-            // 
             // OtherTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,6 +159,7 @@
             this.MinimizeBox = false;
             this.Name = "OtherTools";
             this.Text = "OW Extract Toolkit - Other Tools";
+            this.Load += new System.EventHandler(this.OtherTools_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

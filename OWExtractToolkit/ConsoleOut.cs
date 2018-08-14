@@ -109,14 +109,51 @@ namespace OWExtractToolkit
 
         private void ConsoleOut_Load(object sender, EventArgs e)
         {
-            //button stuff
+            //Style Form Theme
+            Theme theme = new Theme();
+            Style st = theme.getCurrentStyle();
             foreach (Control c in this.Controls)
+            {
+                styleControl(c);
+            }
+
+
+
+            void styleControl(Control c)
             {
                 if (c is Button)
                 {
                     sc.styleButtons(c);
                 }
+
+                if (c is Label)
+                {
+                    c.ForeColor = theme.getCurrentStyle().labelStatic.getColor();
+                }
+
+                if (c is TextBox)
+                {
+                    if (((TextBox)c).ReadOnly)
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxReadOnlyBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxReadOnlyText.getColor();
+                    }
+                    else
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                    }
+                }
+
+                if (c is ComboBox)
+                {
+                    c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                    c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                }
             }
+            this.BackColor = theme.getCurrentStyle().background.getColor();
+            
+            //
         }
 
         private void button12_Click(object sender, EventArgs e)

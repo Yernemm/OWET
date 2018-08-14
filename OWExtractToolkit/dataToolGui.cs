@@ -100,13 +100,64 @@ namespace OWExtractToolkit
                 MessageBox.Show(loFiMsg + " Make sure your settings are set up properly.");
             }
 
+
+
+            //Style Form Theme
+            Theme theme = new Theme();
+            Style st = theme.getCurrentStyle();
             foreach (Control c in this.Controls)
+            {
+                styleControl(c);
+            }
+
+           
+
+            void styleControl(Control c)
             {
                 if (c is Button)
                 {
                     sc.styleButtons(c);
                 }
+
+                if (c is Label)
+                {
+                    c.ForeColor = theme.getCurrentStyle().labelStatic.getColor();
+                }
+
+                if (c is TextBox)
+                {
+                    if (((TextBox)c).ReadOnly)
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxReadOnlyBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxReadOnlyText.getColor();
+                    }
+                    else
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                    }
+                }
+
+                if (c is ComboBox)
+                {
+                    c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                    c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                }
             }
+            this.BackColor = theme.getCurrentStyle().background.getColor();
+            label5.ForeColor = st.labelStatic.getColor();
+            label6.ForeColor = st.labelStatic.getColor();
+            label8.ForeColor = st.labelStatic.getColor();
+
+            statusLb.ForeColor = st.labelDynamic.getColor();
+            owVerLabel.ForeColor = st.labelDynamic.getColor();
+            dtVerLabel.ForeColor = st.labelDynamic.getColor();
+
+            groupBox1.ForeColor = st.labelStatic.getColor();
+            //
+
+
+
 
             langBox.SelectedItem = "enUS";
 

@@ -67,5 +67,53 @@ namespace OWExtractToolkit
                 }
             }
         }
+
+        private void OtherTools_Load(object sender, EventArgs e)
+        {
+            //Style Form
+            Theme theme = new Theme();
+            foreach (Control c in this.Controls)
+            {
+                styleControl(c);
+            }
+
+            foreach (TabPage t in tabControl1.TabPages)
+            {
+                foreach (Control c in t.Controls)
+                {
+                    styleControl(c);
+                }
+                t.BackColor = theme.getCurrentStyle().background.getColor();
+            }
+
+            void styleControl(Control c)
+            {
+                if (c is Button)
+                {
+                    sc.styleButtons(c);
+                }
+
+                if (c is Label)
+                {
+                    c.ForeColor = theme.getCurrentStyle().labelStatic.getColor();
+                }
+
+                if (c is TextBox)
+                {
+                    if (((TextBox)c).ReadOnly)
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxReadOnlyBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxReadOnlyText.getColor();
+                    }
+                    else
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                    }
+                }
+            }
+            this.BackColor = theme.getCurrentStyle().background.getColor();
+            //
+        }
     }
 }

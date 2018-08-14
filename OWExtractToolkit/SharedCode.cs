@@ -18,7 +18,10 @@ namespace OWExtractToolkit
         public string dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit";
         public string settPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\settings.txt";
         public string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\downloads\";
-        public List<string> defSettings = new List<string> { "C:\\Program Files (x86)\\Overwatch", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Yernemm\\OWExtractToolkit" + "\\output" , Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Yernemm\\OWExtractToolkit" + @"\DataTool\Custom", "0" };
+        public string themesPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\Themes";
+        public string themesSetting = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\theme.setting";
+        public string themesDefault = "[default]";
+        public List<string> defSettings = new List<string> { "C:\\Program Files (x86)\\Overwatch", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Yernemm\\OWExtractToolkit" + "\\output" , Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Yernemm\\OWExtractToolkit" + @"\DataTool\Custom", "0"};
         public string[] sts;
         public void loadSettings()
         {
@@ -115,11 +118,12 @@ namespace OWExtractToolkit
 
         public void styleButtons(Control c)
         {
+            Theme theme = new Theme();
             Button b = c as Button;
             b.FlatStyle = FlatStyle.Flat;
-            b.BackColor = Color.OrangeRed;
-            b.ForeColor = Color.Aqua;
-            b.FlatAppearance.BorderColor = Color.Orange;
+            b.BackColor = theme.getCurrentStyle().buttonBackground.getColor();
+            b.ForeColor = theme.getCurrentStyle().buttonText.getColor();
+            b.FlatAppearance.BorderColor = theme.getCurrentStyle().buttonBorder.getColor();
             b.FlatAppearance.BorderSize = 1;
         }
 

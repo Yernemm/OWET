@@ -13,11 +13,12 @@ namespace OWExtractToolkit
     public partial class TopBarMaxim : UserControl
     {
 
+        //Themes
+        Theme theme = new Theme();
 
 
 
-        
-        
+
 
 
 
@@ -67,6 +68,34 @@ namespace OWExtractToolkit
 
 
         private void Loading(object sender, EventArgs e)
+        {
+            windowText.Text = this.ParentForm.Text;
+
+           
+            
+            backPanel.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            windowText.ForeColor = theme.getCurrentStyle().topBarText.getColor();
+            btnMini.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            btnMini.ForeColor = theme.getCurrentStyle().topBarButtonMin.getColor();
+            btnClose.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            btnClose.ForeColor = theme.getCurrentStyle().topBarButtonClose.getColor();
+            btnMax.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            btnMax.ForeColor = theme.getCurrentStyle().topBarButtonMax.getColor();
+        }
+
+        public void setTheme(Style style)
+        {
+            backPanel.BackColor = style.topBarBackground.getColor();
+            windowText.ForeColor = style.topBarText.getColor();
+            btnMini.BackColor = style.topBarBackground.getColor();
+            btnMini.ForeColor = style.topBarButtonMin.getColor();
+            btnClose.BackColor = style.topBarBackground.getColor();
+            btnClose.ForeColor = style.topBarButtonClose.getColor();
+            btnMax.BackColor = style.topBarBackground.getColor();
+            btnMax.ForeColor = style.topBarButtonMax.getColor();
+        }
+
+        public void updateText()
         {
             windowText.Text = this.ParentForm.Text;
         }

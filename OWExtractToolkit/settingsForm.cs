@@ -15,6 +15,8 @@ namespace OWExtractToolkit
     public partial class settingsForm : Form
     {
         SharedCode sc = new SharedCode();
+        Theme theme = new Theme();
+        
 
         string dir;
         string settPath;
@@ -37,18 +39,57 @@ namespace OWExtractToolkit
 
 
 
-            //button stuff
+            //Style Form Theme
+            Style st = theme.getCurrentStyle();
             foreach (Control c in this.Controls)
+            {
+                styleControl(c);
+            }
+
+
+
+            void styleControl(Control c)
             {
                 if (c is Button)
                 {
                     sc.styleButtons(c);
                 }
+
+                if (c is Label)
+                {
+                    c.ForeColor = theme.getCurrentStyle().labelStatic.getColor();
+                }
+
+                if (c is TextBox)
+                {
+                    if (((TextBox)c).ReadOnly)
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxReadOnlyBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxReadOnlyText.getColor();
+                    }
+                    else
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                    }
+                }
+
+                if (c is ComboBox)
+                {
+                    c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                    c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                }
             }
+            this.BackColor = theme.getCurrentStyle().background.getColor();
+            unsavedWarning.ForeColor = st.textWarning.getColor();
+            listThemes.BackColor = st.textBoxInputBackground.getColor();
+            listThemes.ForeColor = st.textBoxInputText.getColor();
+            //
 
             //moving oon
 
             loadSettings();
+            loadThemes();
         }
 
         //open ow dir
@@ -87,6 +128,7 @@ namespace OWExtractToolkit
         //show unsaved message
         void checkUnsaved()
         {
+            Style st = theme.getCurrentStyle();
 
 
             // if (owPathTxt.Text != sts[0] || outPathTxt.Text != sts[1] || dtPathTxt.Text != sts[2])
@@ -109,11 +151,11 @@ namespace OWExtractToolkit
                 if(txList[i].Text != sc.sts[i])
                 {
                     unsavedWarning.Show();
-                    txList[i].ForeColor = Color.OrangeRed;
+                    txList[i].ForeColor = st.settingsTextUnsaved.getColor();
                 }
                 else
                 {
-                    txList[i].ForeColor = Color.Aquamarine;
+                    txList[i].ForeColor = st.textBoxInputText.getColor();
                 }
             }
 
@@ -131,13 +173,13 @@ namespace OWExtractToolkit
             if (ch != sc.sts[3])
             {
                 unsavedWarning.Show();
-                radioButton1.ForeColor = Color.OrangeRed;
-                radioButton2.ForeColor = Color.OrangeRed;
+                radioButton1.ForeColor = st.settingsTextUnsaved.getColor();
+                radioButton2.ForeColor = st.settingsTextUnsaved.getColor();
             }
             else
             {
-                radioButton1.ForeColor = Color.Aquamarine;
-                radioButton2.ForeColor = Color.Aquamarine;
+                radioButton1.ForeColor = st.textBoxInputText.getColor();
+                radioButton2.ForeColor = st.textBoxInputText.getColor();
             }
 
         }
@@ -174,6 +216,7 @@ namespace OWExtractToolkit
             sc.sts[0] = owPathTxt.Text;
             sc.sts[1] = outPathTxt.Text;
             sc.sts[2] = dtPathTxt.Text;
+            
 
             if (radioButton1.Checked == true)
             {
@@ -293,6 +336,67 @@ namespace OWExtractToolkit
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             checkUnsaved();
+        }
+
+        List<Style> themes = new List<Style>();
+        List<string> themeNames = new List<string>();
+
+        void loadThemes()
+        {
+            
+            themes.Add(theme.StyleOWET());
+            themeNames.Add("[default]");
+
+            string[] files = System.IO.Directory.GetFiles(sc.themesPath, "*.owett");
+            foreach(string file in files)
+            {
+                themes.Add(theme.fileToStyle(file));
+                themeNames.Add(Path.GetFileName(file).Split('.')[0]);
+            }
+
+            foreach (Style t in themes)
+            {
+                listThemes.Items.Add(t.name);
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (listThemes.SelectedIndex != -1)
+            {
+                themeSample ts = new themeSample(themes[listThemes.SelectedIndex]);
+                ts.Show();
+            }
+            else
+            {
+                MessageBox.Show("Select a theme to preview.");
+            }
+        }
+
+        private void btThemesApply_Click(object sender, EventArgs e)
+        {
+            if (listThemes.SelectedIndex != -1)
+            {
+                string themeName = themeNames[listThemes.SelectedIndex];
+                File.WriteAllText(sc.themesSetting, themeName);
+                MessageBox.Show("Chosen theme saved. Restart OWET to fully apply it.");
+            }
+            else
+            {
+                MessageBox.Show("Select a theme to apply.");
+            }
+        }
+
+        private void btThemesOpen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(@sc.themesPath);
+            }
+            catch
+            {
+                MessageBox.Show("Error opening the directory. Make sure it exists.");
+            }
         }
     }
 }

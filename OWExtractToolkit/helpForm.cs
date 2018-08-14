@@ -12,7 +12,7 @@ namespace OWExtractToolkit
 {
     public partial class helpForm : Form
     {
-
+       
 
         //***********************************************************
         //This gives us the ability to resize the borderless from any borders instead of just the lower right corner
@@ -100,24 +100,39 @@ namespace OWExtractToolkit
 
         private void helpForm_Load(object sender, EventArgs e)
         {
+            //Style form
+            Theme theme = new Theme();
             foreach (Control c in this.Controls)
             {
                 if (c is Button)
                 {
-                    styleButtons(c);
+                    sc.styleButtons(c);
+                }
+
+                if (c is Label)
+                {
+                    c.ForeColor = theme.getCurrentStyle().labelStatic.getColor();
+                }
+
+                if (c is TextBox)
+                {
+                    if (((TextBox)c).ReadOnly)
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxReadOnlyBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxReadOnlyText.getColor();
+                    }
+                    else
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                    }
                 }
             }
+            this.BackColor = theme.getCurrentStyle().background.getColor();
+            //
         }
 
-        void styleButtons(Control c)
-        {
-            Button b = c as Button;
-            b.FlatStyle = FlatStyle.Flat;
-            b.BackColor = Color.OrangeRed;
-            b.ForeColor = Color.Aqua;
-            b.FlatAppearance.BorderColor = Color.Orange;
-            b.FlatAppearance.BorderSize = 1;
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {

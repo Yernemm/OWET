@@ -12,6 +12,11 @@ namespace OWExtractToolkit
 {
     public partial class TopBar : UserControl
     {
+        //Themes
+        Theme theme = new Theme();
+
+        //
+
 
         //------------------------------------------------------------------------------------------------------------------------------------------------
         // This adds the event handler for the control
@@ -53,6 +58,13 @@ namespace OWExtractToolkit
         private void Loading(object sender, EventArgs e)
         {
             windowText.Text = this.ParentForm.Text;
+
+            backPanel.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            windowText.ForeColor = theme.getCurrentStyle().topBarText.getColor();
+            btnMini.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            btnMini.ForeColor = theme.getCurrentStyle().topBarButtonMin.getColor();
+            btnClose.BackColor = theme.getCurrentStyle().topBarBackground.getColor();
+            btnClose.ForeColor = theme.getCurrentStyle().topBarButtonClose.getColor();
         }
 
         private void btnMini_Click_1(object sender, EventArgs e)

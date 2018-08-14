@@ -95,14 +95,38 @@ namespace OWExtractToolkit
             dir = sc.dir;
             defSettings = sc.defSettings;
 
+
             //Setting up form...
+            Theme theme = new Theme();
             foreach (Control c in this.Controls)
             {
                 if (c is Button)
                 {
                     sc.styleButtons(c);
                 }
+
+                if(c is Label)
+                {
+                    c.ForeColor = theme.getCurrentStyle().labelStatic.getColor();
+                }
+
+                if(c is TextBox)
+                {
+                    if( ((TextBox)c).ReadOnly)
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxReadOnlyBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxReadOnlyText.getColor();
+                    }
+                    else
+                    {
+                        c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
+                        c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
+                    }
+                }
             }
+            this.BackColor = theme.getCurrentStyle().background.getColor();
+            //
+
 
             int r = rnd.Next(subMsg.Count);
             subText.Text = subMsg[r];
@@ -164,10 +188,42 @@ namespace OWExtractToolkit
             createDir("downloads");
             createDir("output");
             createDir(@"\Packages\wem-ogg");
+            createDir(@"Themes");
+
+            //Create all default theme files
+
+            createFileContents("Themes Readme", sc.themesPath + @"\README.txt", @"To make your own theme, duplicate sample.owett and open it with a text editor.
+More info about the syntax is in sample.owett");
+            createFileContents("Light Theme", sc.themesPath + @"\light.owett", theme.coreThemeText("light"));
+            createFileContents("Light Grey Theme", sc.themesPath + @"\lightGrey.owett", theme.coreThemeText("lightGrey"));
+            createFileContents("Sample Theme", sc.themesPath + @"\sample.owett", theme.coreThemeText("sample"));
+            createFileContents("Dark Theme", sc.themesPath + @"\dark.owett", theme.coreThemeText("dark"));
+            createFileContents("Themes Setting", sc.themesSetting, sc.themesDefault);
+
         }
         void logOut(string line)
         {
             logTxt.Text += line + "\r\n";
+        }
+        void createFileContents(string name, string path, string contents)
+        {
+            if (!File.Exists(path))
+            {
+
+                // createFile("settings.txt");
+                try
+                {
+
+                    File.WriteAllText(path, contents);
+                    logOut("File " + name + " created.");
+                }
+                catch (Exception ex)
+                {
+                    logOut("ERROR CREATING "+name+" FILE.");
+                    logOut(Convert.ToString(ex));
+                }
+
+            }
         }
         void createFile(string path)
         {
