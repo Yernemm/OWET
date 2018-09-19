@@ -83,7 +83,7 @@ namespace OWExtractToolkit
         {
             try
             {
-                var webRequest = WebRequest.Create(@"https://ci.appveyor.com/api/projects/yukimono/owlib/branch/tanklib");
+                var webRequest = WebRequest.Create(@"https://ci.appveyor.com/api/projects/yukimono/owlib/branch/master");
                 string strContent = "";
                 using (var response = webRequest.GetResponse())
                 using (var content = response.GetResponseStream())
