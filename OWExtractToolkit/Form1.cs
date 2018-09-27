@@ -70,27 +70,35 @@ namespace OWExtractToolkit
 
 
             //CHECK FOR UPDATES
-            try
+
+            //old method below
+
+            //try
+            //{
+            //    var webRequest = WebRequest.Create(@"https://yernemm.xyz/programs/OWExtractToolkit/version.txt");
+            //    string latestVer = "";
+            //    using (var response = webRequest.GetResponse())
+            //    using (var content = response.GetResponseStream())
+            //    using (var reader = new StreamReader(content))
+            //    {
+            //        latestVer = reader.ReadToEnd();
+            //    }
+
+            //    if (version != latestVer)
+            //        MessageBox.Show(@"New update found. Visit https://yernemm.xyz to download.");
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error connecting to webserver.\r\n\r\n" + ex);
+            //}
+
+            if (sc.checkForOwetUpdate())
             {
-                var webRequest = WebRequest.Create(@"https://yernemm.xyz/programs/OWExtractToolkit/version.txt");
-                string latestVer = "";
-                using (var response = webRequest.GetResponse())
-                using (var content = response.GetResponseStream())
-                using (var reader = new StreamReader(content))
-                {
-                    latestVer = reader.ReadToEnd();
-                }
-
-                if (version != latestVer)
-                    MessageBox.Show(@"New update found. Visit https://yernemm.xyz to download.");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to webserver.\r\n\r\n" + ex);
+                MessageBox.Show(@"New update found. Visit https://yernemm.xyz to download.");
             }
 
-
+            //---------------------------
 
             dir = sc.dir;
             defSettings = sc.defSettings;
@@ -189,6 +197,7 @@ namespace OWExtractToolkit
             createDir("output");
             createDir(@"\Packages\wem-ogg");
             createDir(@"Themes");
+            createDir(@"owet");
 
             //Create all default theme files
 
@@ -199,6 +208,7 @@ More info about the syntax is in sample.owett");
             createFileContents("Sample Theme", sc.themesPath + @"\sample.owett", theme.coreThemeText("sample"));
             createFileContents("Dark Theme", sc.themesPath + @"\dark.owett", theme.coreThemeText("dark"));
             createFileContents("Themes Setting", sc.themesSetting, sc.themesDefault);
+            createFileContents("Updater Setting", sc.updaterSetting, sc.updaterDefault);
 
         }
         void logOut(string line)

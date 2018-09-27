@@ -79,6 +79,11 @@ namespace OWExtractToolkit
                     c.BackColor = theme.getCurrentStyle().textBoxInputBackground.getColor();
                     c.ForeColor = theme.getCurrentStyle().textBoxInputText.getColor();
                 }
+                
+                if (c is CheckBox)
+                {
+                    c.ForeColor = st.textBoxInputText.getColor();
+                }
             }
             this.BackColor = theme.getCurrentStyle().background.getColor();
             unsavedWarning.ForeColor = st.textWarning.getColor();
@@ -181,6 +186,17 @@ namespace OWExtractToolkit
                 radioButton1.ForeColor = st.textBoxInputText.getColor();
                 radioButton2.ForeColor = st.textBoxInputText.getColor();
             }
+
+            string updaterSett = "";
+            if (checkBoxUpdateCheck.Checked)
+                updaterSett += "1";
+            else
+                updaterSett += "0";
+
+            if(checkBoxUpdateDownload.Checked)
+                updaterSett += "1";
+            else
+                updaterSett += "0";
 
         }
 

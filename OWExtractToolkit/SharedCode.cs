@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Windows.Forms;
+using System.Windows.Forms; 
 using System.Xml;
 
 namespace OWExtractToolkit
@@ -20,7 +20,9 @@ namespace OWExtractToolkit
         public string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\downloads\";
         public string themesPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\Themes";
         public string themesSetting = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\theme.setting";
+        public string updaterSetting = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Yernemm\OWExtractToolkit\updater.setting";
         public string themesDefault = "[default]";
+        public string updaterDefault = "11";
         public List<string> defSettings = new List<string> { "C:\\Program Files (x86)\\Overwatch", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Yernemm\\OWExtractToolkit" + "\\output" , Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Yernemm\\OWExtractToolkit" + @"\DataTool\Custom", "0"};
         public string[] sts;
         public void loadSettings()
@@ -114,6 +116,65 @@ namespace OWExtractToolkit
                 return false;
                 
             }
+        }
+
+        public string getOwetDownload()
+        {
+            //https://api.github.com/repos/Yernemm/owet/releases/latest
+            const string GITHUB_API = "https://api.github.com/repos/Yernemm/owet/releases/latest";
+
+            WebClient webClient = new WebClient();
+            // Added user agent
+            webClient.Headers.Add("User-Agent", "OWET");
+            Uri uri = new Uri(string.Format(GITHUB_API, "Yernemm", "owet"));
+            string strContent = webClient.DownloadString(uri);
+
+            string[] pcont = strContent.Split('"');
+            int counter = 0;
+            int valNeed = -1;
+            foreach (string a in pcont)
+            {
+                counter++;
+                if (a.Contains(@"/OWExtractToolkit.exe"))
+                    valNeed = counter -1;
+            }
+
+            return pcont[valNeed];
+
+        }
+
+        public bool checkForOwetUpdate()
+        {
+            //https://api.github.com/repos/Yernemm/owet/releases/latest
+
+            const string GITHUB_API = "https://api.github.com/repos/Yernemm/owet/releases/latest";
+            WebClient webClient = new WebClient();
+            // Added user agent
+            webClient.Headers.Add("User-Agent", "OWET");
+            Uri uri = new Uri(string.Format(GITHUB_API, "Yernemm", "owet"));
+            string strContent = webClient.DownloadString(uri);       
+            
+
+            string[] pcont = strContent.Split('"');
+            int counter = 0;
+            int valNeed = -1;
+            foreach (string a in pcont)
+            {
+                counter++;
+                if (a.Contains(@"tag_name"))
+                    valNeed = counter + 1;
+            }
+
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            string[] v = fvi.FileVersion.Split('.');
+            string verShort = v[0] + "." + v[1] + "." + v[2];
+
+            string[] newV = pcont[valNeed].Split('.');
+            string newVerShort = newV[0] + "." + newV[1] + "." + newV[2];
+
+            return verShort != newVerShort;
+
         }
 
         public void styleButtons(Control c)
