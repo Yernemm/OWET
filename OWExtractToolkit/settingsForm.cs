@@ -414,5 +414,10 @@ namespace OWExtractToolkit
                 MessageBox.Show("Error opening the directory. Make sure it exists.");
             }
         }
+
+        private void checkBoxUpdateCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

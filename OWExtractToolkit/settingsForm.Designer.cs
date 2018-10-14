@@ -49,7 +49,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button9 = new System.Windows.Forms.Button();
-            this.topBar1 = new OWExtractToolkit.TopBar();
             this.label5 = new System.Windows.Forms.Label();
             this.listThemes = new System.Windows.Forms.ListBox();
             this.btThemesApply = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@
             this.checkBoxUpdateCheck = new System.Windows.Forms.CheckBox();
             this.checkBoxUpdateDownload = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.topBar1 = new OWExtractToolkit.TopBar();
             this.SuspendLayout();
             // 
             // button1
@@ -277,13 +277,6 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // topBar1
-            // 
-            this.topBar1.Location = new System.Drawing.Point(-2, -2);
-            this.topBar1.Name = "topBar1";
-            this.topBar1.Size = new System.Drawing.Size(843, 34);
-            this.topBar1.TabIndex = 99;
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,6 +336,7 @@
             this.checkBoxUpdateCheck.TabIndex = 106;
             this.checkBoxUpdateCheck.Text = "Automatically check for OWET updates";
             this.checkBoxUpdateCheck.UseVisualStyleBackColor = true;
+            this.checkBoxUpdateCheck.CheckedChanged += new System.EventHandler(this.checkBoxUpdateCheck_CheckedChanged);
             // 
             // checkBoxUpdateDownload
             // 
@@ -365,6 +359,13 @@
             this.label7.TabIndex = 109;
             this.label7.Text = "OWET Settings:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // topBar1
+            // 
+            this.topBar1.Location = new System.Drawing.Point(-2, -2);
+            this.topBar1.Name = "topBar1";
+            this.topBar1.Size = new System.Drawing.Size(843, 34);
+            this.topBar1.TabIndex = 99;
             // 
             // settingsForm
             // 
