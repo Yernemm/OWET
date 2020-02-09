@@ -1,3 +1,7 @@
+# THIS VERSION OF OWET IS NO LONGER SUPPORTED. FOR THE CURRENT VERSION, CHECK https://github.com/Yernemm/OWET-2
+
+------
+
 # OWET: Overwatch Extract Toolkit [![Build status](https://ci.appveyor.com/api/projects/status/w9w41psrwym4w6mk?svg=true)](https://ci.appveyor.com/project/Yernemm/owet)
 
 ## Download latest build here: https://yernemm.xyz/projects/owet
